@@ -1,11 +1,32 @@
 .header{
-  background-color: green;
   color: red;
-  font-size: 200px;
   align-items: flex-end;
-  padding: 50px;
+  padding: 10px;
 
-
-  this is trial ;
-
+}
+.calc-buttons{
+    display :grid;
+    grid-template-columns: repeat(4,1fr);
+    gap : 10px;
+    width  : 100%;
+    max-width: fit-content;
+    margin : 0 auto;
+}
+.display-res{
+    position: relative;
+    max-width: 150px;
+    background-color: aquamarine;
+    margin: 10 auto 10px auto;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: right;
+    border-color: black;
+}
+#result{
+    font-family: 'Courier New', Courier, monospace;
+}
+#btn-equal{
+    grid-row:span 2 ;
 }
