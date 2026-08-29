@@ -1,15 +1,32 @@
 .header{
   color: red;
-  font-size: px;
   align-items: flex-end;
   padding: 10px;
 
 }
-.calc-buttons:{
-    grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
-    gap : 20px;
+.calc-buttons{
+    display :grid;
+    grid-template-columns: repeat(4,1fr);
+    gap : 10px;
     width  : 100%;
     max-width: fit-content;
     margin : 0 auto;
-
+}
+.display-res{
+    position: relative;
+    max-width: 150px;
+    background-color: aquamarine;
+    margin: 10 auto 10px auto;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: right;
+    border-color: black;
+}
+#result{
+    font-family: 'Courier New', Courier, monospace;
+}
+#btn-equal{
+    grid-row:span 2 ;
 }
