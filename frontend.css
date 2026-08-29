@@ -3,11 +3,6 @@
   font-size: px;
   align-items: flex-end;
   padding: 10px;
-
-}
-.calc-buttons{
-    grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
-    gap : 20px;
 }
 .calc-buttons{
     display :grid;
