@@ -10,7 +10,6 @@ calc.addEventListener('click',(event)=>{
     if(!event.target.matches('button')) return;
     const value = event.target.textContent;
     handelevent(value)
-    updatedisplay(current)
 
 });
 
@@ -26,12 +25,12 @@ window.addEventListener('keydown',(event)=>{
     if(valid_keys.includes(key)){
         event.preventDefault();
         handelevent(key)
-        updatedisplay(current)
+
     }
     if(valid_extras.includes(key)){
         event.preventDefault();
         handelevent(key)
-        updatedisplay(current)
+
     }
 
 });
@@ -44,22 +43,27 @@ function handelevent(key){
     const vali_operator = ['+','-','/','*','+'];
     if(vali_nums.includes(key)){
         current = current+key;  
-         updatedisplay(current) 
     }
     if(vali_operator.includes(key)){
         operator = key;
-        prev = current+operator;
+        prev = current;
         current = '';
-        updatedisplay(current || prev)
+        
+       
     }
-    if(key=='='){
+    updatedisplay(prev+operator+current);
+    if(operator!=''){
         calculate(prev,operator,current);
-        current=result.toString();
-        prev='';
-        operator='';
-        updatedisplay(current)
+        prev=result.toString();
 
-    }
+    }else if(key=='='){
+            calculate(prev,operator,current);
+            current=result.toString();
+            prev='';
+            operator='';
+            updatedisplay(current)
+
+        }
     if(key=='AC'){
         current='';
         operator='';
@@ -71,8 +75,8 @@ function handelevent(key){
 }
 
 function calculate(prev,operator,current){
-    const num1 = parseFloat(prev)
-    const num2 = parseFloat(current)
+    const num1 = parseFloat(current)
+    const num2 = parseFloat(prev)
 
     if(operator=='+') result=num2+num1;
     if(operator=='/') result=num2/num1;
