@@ -1,8 +1,8 @@
 .header{
   color: red;
+  font-size: px;
   align-items: flex-end;
   padding: 10px;
-
 }
 .calc-buttons{
     display :grid;
@@ -11,6 +11,7 @@
     width  : 100%;
     max-width: fit-content;
     margin : 0 auto;
+
 }
 .display-res{
     position: relative;
