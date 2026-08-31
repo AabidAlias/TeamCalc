@@ -40,38 +40,47 @@ window.addEventListener('keydown',(event)=>{
 function handelevent(key){
 
     const vali_nums = ['1','2','3','4','5','6','7','8','9','0','00'];
-    const vali_operator = ['+','-','/','*','+'];
+    const vali_operator = ['+','-','/','*'];
+    const valid_extras = ['=','AC','C'];
     if(vali_nums.includes(key)){
         current = current+key;  
+    }else if(key=='-'&& current == ''){
+        current = '-';
     }
-    if(vali_operator.includes(key)){
-        operator = key;
-        prev = current;
-        current = '';
-        
-       
-    }
-    updatedisplay(prev+operator+current);
-    if(operator!=''){
-        calculate(prev,operator,current);
-        prev=result.toString();
 
-    }else if(key=='='){
+    else if(vali_operator.includes(key)){
+         if(operator!==''&& current ==''){
+            operator = key;
+         }else if(operator!==''&& current !==''){
             calculate(prev,operator,current);
-            current=result.toString();
-            prev='';
-            operator='';
-            updatedisplay(current)
+            prev = result.toString();
+            operator = key;
+            current = '';
+        }else if (current!==''){
+            prev =  current ;
+            operator = key;
+            current = '';
+        }
+
+        }else if(valid_extras.includes(key)){
+        if(key=='='){
+                calculate(prev,operator,current);
+                current=result.toString();
+                prev='';
+                operator='';
+                updatedisplay(current)
 
         }
-    if(key=='AC'){
-        current='';
-        operator='';
-        prev='';
-    }
-    if(key=='C'){
-        current = current.slice(0,-1);
-    }
+        if(key=='AC'){
+            current='';
+            operator='';
+            prev='';
+        }
+        if(key=='C'){
+            current = current.slice(0,-1);
+        }
+        }
+        updatedisplay(prev+operator+current);
 }
 
 function calculate(prev,operator,current){
@@ -88,4 +97,5 @@ function calculate(prev,operator,current){
 function updatedisplay(current){
     display.textContent = current;
 }
+
 
